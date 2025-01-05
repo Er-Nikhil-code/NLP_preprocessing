@@ -1,6 +1,6 @@
 import nltk
 
-# Download punkt tokenizer
+# for deployment at streamlit server
 nltk.download('punkt_tab')
 nltk.download('stopwords') 
 nltk.download('wordnet')
@@ -53,7 +53,7 @@ if corpus:
     if tokenization_type == "Lemmatization":
         word_tokens = word_tokenize(corpus)
         lemmatizer = WordNetLemmatizer()
-        st.subheader("Sentence Tokens:")
+        st.subheader("Lemmatization:")
         for i, tokens in enumerate(word_tokens, 1):
             st.write(f"{i}.  {tokens}  --->  {lemmatizer.lemmatize(tokens)}")
 
