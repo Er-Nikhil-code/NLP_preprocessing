@@ -1,12 +1,8 @@
 import nltk
-import os
 
-# Set the path for NLTK data
-nltk_data_dir = os.path.join(os.getcwd(), 'nltk_data')
-if not os.path.exists(nltk_data_dir):
-    os.makedirs(nltk_data_dir)
-
-nltk.data.path.append(nltk_data_dir)
+# Download punkt tokenizer
+nltk.download('punkt')
+nltk.download('stopwords')  # For stopword removal
 
 # Download the 'punkt' and 'stopwords' datasets
 nltk.download('punkt', download_dir=nltk_data_dir)
