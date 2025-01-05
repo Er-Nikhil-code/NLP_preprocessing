@@ -1,8 +1,16 @@
 import nltk
+import os
 
-# Download required NLTK data
-nltk.download('punkt')
-nltk.download('stopwords')
+# Set the path for NLTK data
+nltk_data_dir = os.path.join(os.getcwd(), 'nltk_data')
+if not os.path.exists(nltk_data_dir):
+    os.makedirs(nltk_data_dir)
+
+nltk.data.path.append(nltk_data_dir)
+
+# Download the 'punkt' and 'stopwords' datasets
+nltk.download('punkt', download_dir=nltk_data_dir)
+nltk.download('stopwords', download_dir=nltk_data_dir)
 
 from nltk.tokenize import sent_tokenize, word_tokenize
 from nltk.stem import PorterStemmer, WordNetLemmatizer
