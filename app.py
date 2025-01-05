@@ -4,10 +4,6 @@ import nltk
 nltk.download('punkt')
 nltk.download('stopwords')  # For stopword removal
 
-# Download the 'punkt' and 'stopwords' datasets
-nltk.download('punkt', download_dir=nltk_data_dir)
-nltk.download('stopwords', download_dir=nltk_data_dir)
-
 from nltk.tokenize import sent_tokenize, word_tokenize
 from nltk.stem import PorterStemmer, WordNetLemmatizer
 from nltk.corpus import stopwords
