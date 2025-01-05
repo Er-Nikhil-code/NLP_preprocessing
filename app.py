@@ -45,9 +45,7 @@ if corpus:
     # Lemmatization
     if tokenization_type == "Lemmatization":
         word_tokens = word_tokenize(corpus)
-
         lemmatizer = WordNetLemmatizer()
-        
         st.subheader("Sentence Tokens:")
         for i, tokens in enumerate(word_tokens, 1):
             st.write(f"{i}.  {tokens}  --->  {lemmatizer.lemmatize(tokens)}")
