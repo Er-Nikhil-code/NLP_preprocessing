@@ -1,8 +1,9 @@
 import nltk
 
 # Download punkt tokenizer
-nltk.download('punkt')
-nltk.download('stopwords')  # For stopword removal
+nltk.download('punkt_tab')
+nltk.download('stopwords') 
+nltk.download('wordnet')
 
 from nltk.tokenize import sent_tokenize, word_tokenize
 from nltk.stem import PorterStemmer, WordNetLemmatizer
