@@ -8,7 +8,7 @@ nltk.download('wordnet')
 from nltk.tokenize import sent_tokenize, word_tokenize
 from nltk.stem import PorterStemmer, WordNetLemmatizer
 from nltk.corpus import stopwords
-
+from sklearn.feature_extraction.text import CountVectorizer
 import streamlit as st
 
 # Title for the Streamlit app
@@ -21,7 +21,7 @@ corpus = st.text_area("Enter corpus (paragraph):")
 # Tokenization options in the sidebar
 st.sidebar.subheader("Select Options ")
 tokenization_type = st.sidebar.radio("",
-                 ('Sentence Tokenization','Word Tokenization', 'Stemming', 'Lemmatization', 'Stopword Removal'))
+                 ('Sentence Tokenization','Word Tokenization', 'Stemming', 'Lemmatization', 'Stopword Removal','Bag Of Words'))
 
 
 # Check if the corpus is not empty
@@ -69,6 +69,26 @@ if corpus:
         # Display the paragraph after removing stopwords
         st.subheader("Paragraph After Stopword Removal:")
         st.write(filtered_paragraph)
+
+    # Bag Of Words
+    if tokenization_type == "Bag Of Words":
+        # Tokenize the corpus into sentences
+        sentences = sent_tokenize(corpus)
+        
+        vectorizer = CountVectorizer(lowercase=True, analyzer='word', max_features=None)
+        vectorizer.fit([corpus])  
+        
+        # Display the features (unified vocabulary)
+        features = vectorizer.get_feature_names_out()
+        st.subheader("Unified Vocabulary:")
+        st.write(f"Features: {features}")
+        
+        # Process each sentence
+        st.subheader("Bag of Words for Each Sentence:")
+        for i, sent in enumerate(sentences, 1):
+            vector = vectorizer.transform([sent])
+            st.write(f"Sentence {i}: {sent}")
+            st.write(f"Vector: {vector.toarray()}")
 
 else:
     st.warning("Please enter a paragraph to tokenize.")
