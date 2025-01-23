@@ -64,7 +64,7 @@ if corpus and submit_button:
         lemmatizer = WordNetLemmatizer()
         st.subheader("Lemmatization:")
         for i, tokens in enumerate(word_tokens, 1):
-            st.write(f"{i}.  {tokens}  --->  {lemmatizer.lemmatize(tokens)}")
+            st.write(f"{i}.  {tokens}  --->  {lemmatizer.lemmatize(tokens,pos="v")}") # POS is set to verb
         st.subheader(f"About {tokenization_type}")
         st.write("Lemmatization in Natural Language Processing (NLP) is the process of transforming a word into its canonical or dictionary form, known as its lemma. Unlike stemming, which may simply truncate words to their base forms without considering their actual meaning, lemmatization takes into account the morphological analysis of the word, including its part of speech and context, to ensure that the resulting lemma is a valid word.")
 
